@@ -3,9 +3,11 @@ $color: #262626;
 
 .pocketOperatorPageContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  position: relative;
 }
 
 .container {
@@ -52,4 +54,24 @@ $color: #262626;
     inset 0 2px 1px 1px rgba(20, 20, 20, 0.9),
     inset 0 -2px 1px 0 rgba(0, 0, 0, 0.25),
     inset -1px -1px 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.onlineUsers {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  user-select: none;
 }

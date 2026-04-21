@@ -66,6 +66,8 @@ type PatternConfig = {
 type PocketOperatorProps = {
   className: string;
   patternConfig: PatternConfig;
+  onBroadcastButtonPress?: (buttonNumber: number) => void;
+  remoteButtonPress?: (fn: (buttonNumber: number) => void) => void;
 };
 
 /**
@@ -98,6 +100,8 @@ const PocketOperator = ({
     queueSelectedPattern,
     queuedSelectedPattern,
   },
+  onBroadcastButtonPress,
+  remoteButtonPress,
 }: PocketOperatorProps) => {
   // Tumbler levels: [0, 8]. set by the two knobs
   const [tumblerALevel, setTumblerALevel] = useState(4);
@@ -130,6 +134,25 @@ const PocketOperator = ({
     suspend: Boolean(queuedSelectedPattern),
   });
 
+  // Keep stable refs so the remote press handler always calls the latest versions.
+  const triggerAnimationRef = useRef(triggerAnimation);
+  useEffect(() => { triggerAnimationRef.current = triggerAnimation; });
+  const playSampleRef = useRef(playSample);
+  useEffect(() => { playSampleRef.current = playSample; });
+
+  // Expose a remote button press handler to the parent via callback ref.
+  // Only re-registers when remoteButtonPress itself changes (i.e. once on mount).
+  useEffect(() => {
+    remoteButtonPress?.((buttonNumber: number) => {
+      try {
+        triggerAnimationRef.current(buttonNumber - 1);
+        playSampleRef.current([buttonNumber - 1]);
+      } catch (e) {
+        console.error("[PocketOperator.remoteButtonPress] Error playing sample", e);
+      }
+    });
+  }, [remoteButtonPress]);
+
   /**
    * Interpret a numeric button click,
    * playing a sound or toggling a note in a pattern.
@@ -155,6 +178,7 @@ const PocketOperator = ({
             try {
               triggerAnimation(currentButtonIndex);
               playSample([currentButtonIndex]);
+              onBroadcastButtonPress?.(buttonNumber);
             } catch (e) {
               console.error(
                 "[PocketOperator.onButtonClick] Error playing sample",
@@ -175,6 +199,7 @@ const PocketOperator = ({
       recording,
       selectedSound,
       selectedPattern,
+      onBroadcastButtonPress,
     ]
   );
 
