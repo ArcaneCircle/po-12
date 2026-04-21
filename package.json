@@ -21,10 +21,9 @@
     "react"
   ],
   "scripts": {
-    "start": "vite --port 3000",
+    "dev": "vite --port 3000",
     "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "bun run build && bunx wrangler pages deploy"
+    "preview": "vite preview"
   },
   "dependencies": {
     "baseline-browser-mapping": "^2.10.18",
@@ -42,8 +41,7 @@
     "sass": "^1.99.0",
     "typescript": "^5.9.3",
     "vite": "^8.0.8",
-    "vite-plugin-pwa": "^1.2.0",
-    "wrangler": "^4.81.1"
+    "vite-plugin-pwa": "^1.2.0"
   },
   "trustedDependencies": [
     "@parcel/watcher",

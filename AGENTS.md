@@ -7,7 +7,6 @@ Source lives under `src/`: `components/` contains reusable LCD, pocket-operator,
 - `bun dev` — Runs Vite dev server with HMR. Useful while iterating on figure animators or sampler UI.
 - `bun run build` — Production build to `dist/`; ensure it passes before opening a PR.
 - `bun run preview` — Serves the optimized build locally.
-- `bun run deploy` — Build and deploy to Cloudflare Pages.
 
 ## Coding Style & Naming Conventions
 Use TypeScript everywhere. Follow 2-space indentation. Components are PascalCase (`PocketOperatorPanel`), hooks begin with `use` and camelCase (`useFigureAnimator`), and CSS Modules follow `*.module.scss`. Prefer refs + DOM class toggles for high-frequency animation to avoid React churn, and keep derived values memoized to limit rerenders.

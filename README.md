@@ -17,7 +17,7 @@ pnpm i
 To test your work in your browser (with hot reloading!) while developing:
 
 ```
-pnpm start
+pnpm dev
 ```
 
 ### Building

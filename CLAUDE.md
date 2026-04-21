@@ -14,7 +14,6 @@ This is a web-based emulation of the Teenage Engineering PO-12 pocket operator d
 - `bun dev` - Start Vite dev server with HMR
 - `bun run build` - Build for production (outputs to `dist/`)
 - `bun run preview` - Preview production build locally
-- `bun run deploy` - Build and deploy to Cloudflare Pages
 
 ### Requirements
 - Bun (package manager and runtime)
