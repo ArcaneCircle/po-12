@@ -134,17 +134,24 @@ const PocketOperator = ({
     suspend: Boolean(queuedSelectedPattern),
   });
 
+  // Keep stable refs so the remote press handler always calls the latest versions.
+  const triggerAnimationRef = useRef(triggerAnimation);
+  useEffect(() => { triggerAnimationRef.current = triggerAnimation; });
+  const playSampleRef = useRef(playSample);
+  useEffect(() => { playSampleRef.current = playSample; });
+
   // Expose a remote button press handler to the parent via callback ref.
+  // Only re-registers when remoteButtonPress itself changes (i.e. once on mount).
   useEffect(() => {
     remoteButtonPress?.((buttonNumber: number) => {
       try {
-        triggerAnimation(buttonNumber - 1);
-        playSample([buttonNumber - 1]);
+        triggerAnimationRef.current(buttonNumber - 1);
+        playSampleRef.current([buttonNumber - 1]);
       } catch (e) {
         console.error("[PocketOperator.remoteButtonPress] Error playing sample", e);
       }
     });
-  }, [remoteButtonPress, triggerAnimation, playSample]);
+  }, [remoteButtonPress]);
 
   /**
    * Interpret a numeric button click,

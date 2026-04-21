@@ -68,7 +68,8 @@ const useRealtime = (onRemoteAction: (action: RealtimeAction) => void) => {
   const sendAction = useCallback((action: RealtimeAction) => {
     const rt = rtRef.current;
     if (!rt) return;
-    rt.setState({ action, ts: Date.now() });
+    const ts = Date.now();
+    rt.setState({ action, ts });
     rt.sendPayload(action);
   }, []);
 

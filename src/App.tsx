@@ -43,7 +43,7 @@ function App() {
     resetPatterns,
   } = usePatterns();
 
-  const { bpm, setBPM, goToNextBPM, resetBPM } = useBPM();
+  const { bpm, setBPM, resetBPM } = useBPM();
 
   const [selectedSound, setSelectedSound] = useLocalStorage(
     "pocketOperatorSelectedSound",
@@ -152,8 +152,9 @@ function App() {
                 sendAction({ type: "bpm_change", bpm: newBpm });
               },
               goToNextBPM: () => {
-                goToNextBPM();
-                sendAction({ type: "bpm_change", bpm: getNextBPM(bpm) });
+                const nextBpm = getNextBPM(bpm);
+                setBPM(nextBpm);
+                sendAction({ type: "bpm_change", bpm: nextBpm });
               },
               selectedSound,
               setSelectedSound: (sound) => {
@@ -167,8 +168,9 @@ function App() {
               currentBeat,
               playing,
               togglePlaying: () => {
+                const newPlaying = !playing;
                 togglePlaying();
-                sendAction({ type: "play_toggle", playing: !playing });
+                sendAction({ type: "play_toggle", playing: newPlaying });
               },
               currentBeatIndex,
               currentPattern,
