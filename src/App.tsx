@@ -1,3 +1,4 @@
+import { Peer } from "@webxdc/realtime";
 import PocketOperator from "./components/PocketOperator";
 import classes from "./App.module.scss";
 import { useState, useEffect, useMemo } from "react";
@@ -18,6 +19,7 @@ const defaultTilt = { x: 0, y: 0 };
 function App() {
   const onTouchDevice = useIsTouchDevice();
 
+  // TODO: const [peers, setPeers] = useState<Peer<State>[]>([]);
   const [show, setShowing] = useState(false);
 
   const [productTourMode, setProductTourMode] = useLocalStorage<
