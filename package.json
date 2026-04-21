@@ -37,6 +37,8 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "@webxdc/realtime": "^0.2.2",
+    "@webxdc/types": "latest",
     "@webxdc/vite-plugins": "latest",
     "sass": "^1.99.0",
     "typescript": "^5.9.3",
