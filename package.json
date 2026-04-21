@@ -21,7 +21,7 @@
     "react"
   ],
   "scripts": {
-    "dev": "vite",
+    "start": "vite --port 3000",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "bun run build && bunx wrangler pages deploy"

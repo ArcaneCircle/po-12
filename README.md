@@ -1,15 +1,51 @@
 # PO-12
 
-A [teenage engineering](https://teenage.engineering/) pocket operator emulated [in the browser](https://po-12.jake.kitchen).
+A [teenage engineering](https://teenage.engineering/) pocket operator emulated in [webxdc](https://webxdc.org).
 
-https://github.com/jakeisnt/po-12/assets/29869612/afb94a7d-d3a8-4d2c-ab2d-9ad00d1b500e
+## Contributing
 
-## Getting Started
+### Installing Dependencies
 
-Install `bun` and `node`.
+After cloning this repo, install dependencies:
 
-Run the development server (Turbopack powered):
-
-```bash
-bun dev
 ```
+pnpm i
+```
+
+### Testing the app in the browser
+
+To test your work in your browser (with hot reloading!) while developing:
+
+```
+pnpm start
+```
+
+### Building
+
+To package the WebXDC file:
+
+```
+pnpm build
+```
+
+To package the WebXDC with developer tools inside to debug in Delta Chat, set the `NODE_ENV`
+environment variable to "debug":
+
+```
+NODE_ENV=debug pnpm build
+```
+
+The resulting optimized `.xdc` file is saved in `dist-xdc/` folder.
+
+### Releasing
+
+To automatically build and create a new GitHub release with the `.xdc` file:
+
+```
+git tag -a v1.0.1
+git push origin v1.0.1
+```
+
+## Credits
+
+This is a port to webxdc of https://github.com/ulnd/po-12
