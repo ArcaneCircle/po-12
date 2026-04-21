@@ -6,6 +6,7 @@
   "homepage": "https://po-12.jake.kitchen",
   "author": "jakeisnt",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/jakeisnt/po-12"
@@ -37,6 +38,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "@webxdc/vite-plugins": "latest",
     "sass": "^1.99.0",
     "typescript": "^5.9.3",
     "vite": "^8.0.8",
